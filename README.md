@@ -21,6 +21,7 @@
 
 - **Global and Environment-specific Aliases:**
   - Use global aliases by default or switch to local environment-specific aliases by setting the `GOTO_ENV_DIR` variable.
+  - Use environment variables in the `.goto-aliases` file for directories with variable locations
 - **Alias Management:**
   - Register (`-r`) and unregister (`-u`) aliases for directories.
 - **Alias Listing and Expansion:**
@@ -104,8 +105,10 @@ The script operates in two modes:
 
 The script supports autocomplete for:
 
-- Command options (e.g., `-r`, `-u`, `-l`, etc.)
 - Registered aliases
+
+Planned:
+- Command options (e.g., `-r`, `-u`, `-l`, etc.)
 
 Autocomplete will trigger when you start typing the `goto` command and press `TAB`.
 

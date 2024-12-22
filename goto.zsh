@@ -157,7 +157,7 @@ USAGE
 
 # Display the script version.
 _goto_version() {
-  echo "goto version 1.0.1"
+  echo "goto version 1.1.0"
 }
 
 # Expands directory.
@@ -326,7 +326,7 @@ _goto_directory() {
     return 1
   fi
 
-  cd "$directory" || return 1
+  eval cd "$directory" || return 1
 }
 
 # Cleans up aliases that point to non-existent directories
