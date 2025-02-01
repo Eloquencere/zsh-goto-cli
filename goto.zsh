@@ -138,7 +138,7 @@ _goto_resolve_db() {
 
 # Display usage information.
 _goto_usage() {
-  cat <<USAGE
+  \cat <<USAGE
 usage: goto [<option>] <alias> [<directory>]
 
 OPTIONS:
@@ -384,16 +384,30 @@ _goto_autocomplete() {
 
 # Completes options for goto.
 _goto_complete_options() {
-  local options="-r --register -u --unregister -p --push -o --pop -l --list -x --expand -c --cleanup -h --help -v --version"
-  compadd $options
+    _arguments -s -S \
+        '--mode[Display the current mode]' \
+        '--register[Register an alias]' \
+        '--unregister[Unregister an alias]' \
+        '--push[Push the current directory onto the stack, then goto]' \
+        '--pop[Pop the top directory from the stack, then change to that directory]' \
+        '--list[List aliases]' \
+        '--expand[Expand an alias]' \
+        '--cleanup[Clean up non-existent directory aliases]' \
+        '--help[Prints the help section]' \
+        '--version[Displays the version of the goto script]' \
 }
 
 # Completes aliases for goto.
 _goto_complete_aliases() {
   local db=$(_goto_resolve_db)
   if [[ -f "$db" ]]; then
+    # _values "aliases" \
+    #     'root[come to root]' \
+    #     'shit[come to root]' \
+
     compadd $(cut -d' ' -f1 "$db")
   fi
 }
 
 compdef _goto_autocomplete goto
+
